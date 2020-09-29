@@ -1,0 +1,6 @@
+# production environment configurations
+production:
+  proxyServer: http://113.55.14.214:3128
+# debug environment configurations
+debug:
+  proxyServer: http://113.55.14.214:3128
