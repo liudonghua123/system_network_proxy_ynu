@@ -1,0 +1,55 @@
+name: MacOS-CI
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    if: contains(github.ref, 'tags')
+    steps:
+      - uses: actions/checkout@v2
+      - name: Branch name
+        id: branch_name
+        run: |
+          echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
+          echo ::set-output name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
+          echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '8.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'dev'
+
+      - name: Enable macos support
+        run: |
+          flutter config --enable-macos-desktop
+
+      - name: Build macos
+        run: |
+          flutter pub get
+          flutter build macos
+
+      - name: Debug
+        run: |
+          sudo npm install tree-node-cli -g
+          treee build
+
+      - name: Prepare release files
+        run: |
+          cp -r build/macos/Build/Products/Release/system_network_proxy.app system_network_proxy-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
+          zip system_network_proxy-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r system_network_proxy-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
+
+      - uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: system_network_proxy-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip
+          tags: true
+          draft: false
