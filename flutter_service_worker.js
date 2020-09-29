@@ -268,8 +268,8 @@ const RESOURCES = {
 "assets/assets/config.yaml": "1332c8cfb42fa5c2ae19fdb935e76635",
 "assets/AssetManifest.json": "fd7135adef864f46d72795e743f96f67",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"index.html": "ffc67696e68ebfc6e374ed0ccb656aa8",
-"/": "ffc67696e68ebfc6e374ed0ccb656aa8",
+"index.html": "4cef9c29aeaa2188b1eb733453e5a507",
+"/": "4cef9c29aeaa2188b1eb733453e5a507",
 "manifest.json": "4ddb205d11fe35d3c1ecffec116bf5ab",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1"
