@@ -32,17 +32,17 @@ dependencies:
   shared_preferences: ^0.5.12
   overlay_support: ^1.0.5
   yaml_config: ^0.1.2
-  flutter_form_builder: ^3.14.0-alpha.3
+  flutter_form_builder: ^3.14.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-dependency_overrides:
-  flutter_form_builder:
-    git:
-      url: https://github.com/knaeckeKami/flutter_form_builder.git
-      ref: v3.14.0-alpha.2-fix
+# dependency_overrides:
+#   flutter_form_builder:
+#     git:
+#       url: https://github.com/knaeckeKami/flutter_form_builder.git
+#       ref: v3.14.0-alpha.2-fix
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
