@@ -33,6 +33,14 @@ dependencies:
   overlay_support: ^1.0.5
   yaml_config: ^0.1.2
   flutter_form_builder: ^3.14.0
+  http: ^0.12.2
+  progress_dialog: ^1.2.4
+  flutter_vector_icons: ^0.2.1
+  # desktop_window: ^0.3.0
+  window_size:
+    git:
+      url: git://github.com/google/flutter-desktop-embedding.git
+      path: plugins/window_size
 
 dev_dependencies:
   flutter_test:
@@ -88,3 +96,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: FZLanTingYuan
+      fonts:
+        - asset: assets/fonts/FZLanTYJW_Xian.ttf
+

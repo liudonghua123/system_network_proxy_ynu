@@ -1,6 +1,10 @@
 # production environment configurations
 production:
+  proxyEnable: true
   proxyServer: http://113.55.14.214:3128
+  configUrl: https://raw.githubusercontent.com/liudonghua123/system_network_proxy/master/assets/config.yaml
 # debug environment configurations
 debug:
+  proxyEnable: false
   proxyServer: http://113.55.14.214:3128
+  configUrl: https://raw.githubusercontent.com/liudonghua123/system_network_proxy/master/assets/config.yaml

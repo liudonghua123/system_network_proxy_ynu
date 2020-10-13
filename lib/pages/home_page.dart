@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:system_network_proxy/components/network_interfaces.dart';
 import 'package:system_network_proxy/constants.dart';
+import 'package:system_network_proxy/flutter_configuration.dart';
+import 'package:system_network_proxy/main.dart';
 import 'package:system_network_proxy/service.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,10 +16,23 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+class ExpandedItem {
+  bool isExpanded;
+  final String header;
+  final Widget body;
+  final Icon iconpic;
+  ExpandedItem(this.isExpanded, this.header, this.body, this.iconpic);
+}
+
 class _HomePageState extends State<HomePage> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
-  var proxyEnable = false;
-  var proxyServer = '';
+  var proxyEnable = Service().proxyEnable;
+  var proxyServer = Service().proxyServer;
+  var configUrl = Service().configUrl;
+
+  List<ExpandedItem> items;
+  TextEditingController proxyServerController = new TextEditingController(text: Service().proxyServer);
+
   @override
   void initState() {
     super.initState();
@@ -23,83 +40,174 @@ class _HomePageState extends State<HomePage> {
   }
 
   void loadData() async {
-    var service = Service();
-    proxyEnable = await service.getProxyEnable();
-    proxyServer = await service.getProxyServer();
-    setState(() {
-      _fbKey.currentState.fields['proxyEnable'].currentState.didChange(proxyEnable);
-      _fbKey.currentState.fields['proxyServer'].currentState.didChange(proxyServer);
-    });
+    items = <ExpandedItem>[
+      ExpandedItem(
+        true, // isExpanded ?
+        '系统代理', // header
+        Padding(
+          padding: EdgeInsets.all(DEFAULT_EDGEINSETS),
+          child: FormBuilder(
+            key: _fbKey,
+            initialValue: {
+              'proxyEnable': proxyEnable,
+            },
+            child: Column(
+              children: <Widget>[
+                FormBuilderSwitch(
+                  label: Text('是否启用代理 ( $proxyServer )'),
+                  attribute: "proxyEnable",
+                  initialValue: proxyEnable,
+                  onChanged: (value) async {
+                    await configProxySettings(value, proxyServer, configUrl);
+                  },
+                ),
+              ],
+            ),
+          ),
+        ), // body
+        Icon(FontAwesome5Solid.network_wired),
+      ),
+      ExpandedItem(
+        false, // isExpanded ?
+        '网卡信息', // header
+        Padding(
+          padding: EdgeInsets.all(DEFAULT_EDGEINSETS),
+          child: NetworkInterfaces(),
+        ), // body
+        Icon(MaterialCommunityIcons.check_network_outline),
+      ),
+    ];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(DEFAULT_EDGEINSETS),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text(
-                '系统代理',
-                style: defaultTitleTextStyle,
-              ),
-              FormBuilder(
-                key: _fbKey,
-                initialValue: {
-                  'proxyEnable': proxyEnable,
-                  'proxyServer': proxyServer,
-                },
-                child: Column(
-                  children: <Widget>[
-                    FormBuilderSwitch(
-                      label: Text('是否启用'),
-                      attribute: "proxyEnable",
-                      initialValue: proxyEnable,
-                    ),
-                    FormBuilderTextField(
-                      attribute: "proxyServer",
-                      decoration: InputDecoration(labelText: "代理设置"),
-                      validators: [
-                        FormBuilderValidators.max(64),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Text(
-                '网络信息',
-                style: defaultTitleTextStyle,
-              ),
-              NetworkInterfaces(),
-            ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ExpansionPanelList(
+            expansionCallback: (int index, bool isExpanded) {
+              setState(() {
+                items[index].isExpanded = !items[index].isExpanded;
+              });
+            },
+            children: items
+                .map(
+                  (ExpandedItem item) => ExpansionPanel(
+                    headerBuilder: (BuildContext context, bool isExpanded) {
+                      return ListTile(
+                        leading: item.iconpic,
+                        title: Text(
+                          item.header,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        onTap: () => setState(() {
+                          item.isExpanded = !isExpanded;
+                        }),
+                        onLongPress: () async => {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text('配置代理', style: TextStyle(color: Colors.blueAccent)),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    TextField(
+                                      controller: proxyServerController,
+                                      textAlign: TextAlign.left,
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: '输入代理地址',
+                                        hintStyle: TextStyle(color: Colors.grey),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                actions: [
+                                  FlatButton(
+                                    child: Text("取消"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  FlatButton(
+                                    child: Text("更新"),
+                                    onPressed: () async {
+                                      var progressDialog = ProgressDialog(
+                                        context,
+                                        type: ProgressDialogType.Normal,
+                                        isDismissible: false,
+                                        showLogs: true,
+                                      );
+                                      await progressDialog.show();
+                                      var remoteConfig = await FlutterConfiguration.fromAssetUrl(config.configUrl);
+                                      await progressDialog.hide();
+                                      proxyServerController.text = remoteConfig.proxyServer;
+                                      configProxySettings(
+                                          proxyEnable, remoteConfig.proxyServer, remoteConfig.configUrl);
+                                    },
+                                  ),
+                                  FlatButton(
+                                    child: Text("确定"),
+                                    onPressed: () {
+                                      configProxySettings(proxyEnable, proxyServerController.text, configUrl);
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          )
+                        },
+                      );
+                    },
+                    isExpanded: item.isExpanded,
+                    body: item.body,
+                  ),
+                )
+                .toList(),
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          if (_fbKey.currentState.saveAndValidate()) {
-            var proxyEnable = _fbKey.currentState.value['proxyEnable'];
-            var proxyServer = _fbKey.currentState.value['proxyServer'];
-            var service = Service();
-            bool proxyEnableSuccess = await service.setProxyEnable(proxyEnable);
-            bool proxyServerSuccess = await service.setProxyServer(proxyServer);
-            if (!proxyEnableSuccess || !proxyServerSuccess) {
-              return showSimpleNotification(
-                Text("设置系统代理错误"),
-                background: Colors.red,
-                position: NotificationPosition.bottom,
-              );
-            }
-            showSimpleNotification(
-              Text("成功设置系统代理"),
-              background: Colors.green,
-              position: NotificationPosition.bottom,
-            );
-          }
-        },
-        child: Icon(Icons.save),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () async {
+      //     if (_fbKey.currentState.saveAndValidate()) {
+      //       var proxyEnable = _fbKey.currentState.value['proxyEnable'];
+      //       await configProxySettings(proxyEnable, proxyServer, configUrl);
+      //     }
+      //   },
+      //   child: Icon(Icons.save),
+      // ),
+    );
+  }
+
+  configProxySettings(proxyEnable, proxyServer, configUrl) async {
+    var service = Service();
+    bool proxyEnableSuccess = await service.setProxyEnable(proxyEnable);
+    bool proxyServerSuccess = await service.setProxyServer(proxyServer);
+    if (!proxyEnableSuccess || !proxyServerSuccess) {
+      return showSimpleNotification(
+        Text("设置系统代理错误"),
+        background: Colors.red,
+        position: NotificationPosition.bottom,
+      );
+    }
+    setState(() {
+      this.proxyEnable = proxyEnable;
+      this.proxyServer = proxyServer;
+      this.configUrl = configUrl;
+      loadData();
+    });
+    service.saveProxySettings(proxyEnable, proxyServer, configUrl);
+    showSimpleNotification(
+      Text("成功设置系统代理"),
+      background: Colors.green,
+      position: NotificationPosition.bottom,
     );
   }
 }

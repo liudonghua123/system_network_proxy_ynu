@@ -12,6 +12,7 @@ class NetworkInterfaces extends StatefulWidget {
 
 class _NetworkInterfacesState extends State<NetworkInterfaces> {
   List<NetworkInterface> interfaces = [];
+  bool loading = true;
   @override
   void initState() {
     super.initState();
@@ -19,18 +20,26 @@ class _NetworkInterfacesState extends State<NetworkInterfaces> {
   }
 
   loadData() async {
+    setState(() {
+      loading = true;
+    });
     interfaces = await Service().getNetworkInterface();
+    setState(() {
+      loading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: interfaces
-          .map((item) => ListTile(
-                title: Text(item.name),
-                subtitle: Text('${item.addresses[0]?.address}'),
-              ))
-          .toList(),
+      children: loading
+          ? CircularProgressIndicator()
+          : interfaces
+              .map((item) => ListTile(
+                    title: Text(item.name),
+                    subtitle: Text('${item.addresses[0]?.address}'),
+                  ))
+              .toList(),
     );
   }
 }

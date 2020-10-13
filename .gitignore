@@ -42,3 +42,5 @@ app.*.map.json
 
 **/Generated*
 **/generated*
+
+.vscode/*

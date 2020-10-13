@@ -193,13 +193,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.8"
+  flutter_vector_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_vector_icons
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.2.1"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       url: "https://pub.flutter-io.cn"
@@ -366,6 +373,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.13"
+  progress_dialog:
+    dependency: "direct main"
+    description:
+      name: progress_dialog
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.2.4"
   random_string:
     dependency: transitive
     description:
@@ -511,6 +525,15 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.7.3"
+  window_size:
+    dependency: "direct main"
+    description:
+      path: "plugins/window_size"
+      ref: HEAD
+      resolved-ref: "8ea9f1ce79f04e44bd6392f4155a014b0a7eb6e8"
+      url: "git://github.com/google/flutter-desktop-embedding.git"
+    source: git
+    version: "0.1.0"
   xdg_directories:
     dependency: transitive
     description:
