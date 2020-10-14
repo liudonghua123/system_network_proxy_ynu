@@ -37,6 +37,11 @@ jobs:
           flutter pub get
           flutter build windows
 
+      - name: Copy required Visual C++ redistributables files
+        run: |
+          cp -r ./resources/windows_c++_redistributables/* ./build/windows/runner/Release/
+        shell: bash
+
       - name: Prepare release files
         run: |
           7z a -tzip system_network_proxy-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r .\build\windows\runner\Release\*
