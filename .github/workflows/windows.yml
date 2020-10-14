@@ -42,6 +42,14 @@ jobs:
           cp -r ./resources/windows_c++_redistributables/* ./build/windows/runner/Release/
         shell: bash
 
+      - name: Build setup installer with squirrel.windows
+        run: |
+          mkdir -p ./squirrel.windows.build/lib/net45/
+          cp -r ./build/windows/runner/Release/* ./squirrel.windows.build/lib/net45/
+          ./resources/nuget.exe pack ./resources/system_network_proxy.nuspec -BasePath ./squirrel.windows.build -OutputDirectory ./squirrel.windows.build
+          ./resources/packages/squirrel.windows.2.0.1/tools/Squirrel.exe --releasify ./squirrel.windows.build/system_network_proxy.1.0.0.nupkg --releaseDir=./squirrel.windows.build-release
+        shell: bash
+
       - name: Prepare release files
         run: |
           7z a -tzip system_network_proxy-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r .\build\windows\runner\Release\*
@@ -50,6 +58,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: system_network_proxy-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip
+          file: system_network_proxy-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip;squirrel.windows.build-release\RELEASES;squirrel.windows.build-release\Setup.exe;squirrel.windows.build-release\Setup.msi;squirrel.windows.build-release\system_network_proxy-1.0.0-full.nupkg
           tags: true
           draft: false

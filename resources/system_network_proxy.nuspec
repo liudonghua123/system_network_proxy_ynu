@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>system_network_proxy</id>
+    <version>1.0.0</version>
+    <authors>Donghua Liu</authors>
+    <owners>Donghua Liu</owners>
+    <licenseUrl>https://raw.githubusercontent.com/markwal/GpxUi/master/LICENSE</licenseUrl>
+    <projectUrl>http://github.com/markwal/GpxUi</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/markwal/GpxUi/master/gpx.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>system_network_proxy is a simple and small system proxy config app.</description>
+    <copyright>Copyright 2020, all rights reserved</copyright>
+    <tags>flutter windows proxy</tags>
+  </metadata>
+</package>
