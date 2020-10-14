@@ -42,6 +42,7 @@ jobs:
           cp -r ./resources/windows_c++_redistributables/* ./build/windows/runner/Release/
         shell: bash
 
+      # http://markwal.github.io/programming/2015/07/28/squirrel-for-windows.html
       - name: Build setup installer with squirrel.windows
         run: |
           mkdir -p ./squirrel.windows.build/lib/net45/
@@ -58,6 +59,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: system_network_proxy-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip;squirrel.windows.build-release\RELEASES;squirrel.windows.build-release\Setup.exe;squirrel.windows.build-release\Setup.msi;squirrel.windows.build-release\system_network_proxy-1.0.0-full.nupkg
+          file: system_network_proxy-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip; squirrel.windows.build-release/*
           tags: true
           draft: false
