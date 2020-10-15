@@ -4,8 +4,9 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "assets/assets/config.yaml": "8a37ffc3034317e7bf6db1ece4a4ae13",
+"assets/assets/icon.png": "69acb14636c8757a8aecdb9cf73f63e1",
 "assets/assets/fonts/FZLanTYJW_Xian.ttf": "a495ca7d848143195438cd64b1f2a5cf",
-"assets/AssetManifest.json": "c582c3ba648929b1d70f2646bfff17b7",
+"assets/AssetManifest.json": "2fc79d49e01624ec9f99f73392bb91bc",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "b14fcf3ee94e3ace300b192e9e7c8c5d",
 "assets/packages/flutter_vector_icons/fonts/FontAwesome.ttf": "b06871f281fee6b241d60582ae9369b9",
@@ -282,13 +283,13 @@ const RESOURCES = {
 "assets/packages/country_pickers/assets/us.png": "b2b35d5b34ba0d66fda92e2003cd6b10",
 "assets/packages/progress_dialog/assets/double_ring_loading_io.gif": "e5b006904226dc824fdb6b8027f7d930",
 "assets/FontManifest.json": "d823aae6b397c649806eb94f812c239d",
-"assets/NOTICES": "6761ab092977d41a8704777c07081702",
+"assets/NOTICES": "e6e5f4b3c124399b5dc58f4f92f03cf8",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "version.json": "2006ddca5e8055546a8ca8c613fd5552",
-"main.dart.js": "5ef58d345ec2f033d1261e4d19e55f3e",
+"main.dart.js": "16a867cb29ac565c7b253a2468ed16dc",
 "manifest.json": "4ddb205d11fe35d3c1ecffec116bf5ab",
-"index.html": "a3c9b8e4e449fbecd517d92641a955a7",
-"/": "a3c9b8e4e449fbecd517d92641a955a7",
+"index.html": "e22d8a79b4bf77711718d3c589e9b564",
+"/": "e22d8a79b4bf77711718d3c589e9b564",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1"
 };
