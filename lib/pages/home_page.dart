@@ -32,7 +32,20 @@ class _HomePageState extends State<HomePage> {
   var proxyServer = Service().proxyServer;
   var configUrl = Service().configUrl;
 
-  List<ExpandedItem> items = [];
+  List<ExpandedItem> items = <ExpandedItem>[
+    ExpandedItem(
+      false,
+      '系统代理',
+      Container(),
+      Icon(FontAwesome5Solid.network_wired),
+    ),
+    ExpandedItem(
+      false,
+      '网卡信息',
+      Container(),
+      Icon(MaterialCommunityIcons.check_network_outline),
+    ),
+  ];
   TextEditingController proxyServerController = new TextEditingController(text: Service().proxyServer);
 
   @override
