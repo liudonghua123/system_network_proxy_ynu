@@ -8,6 +8,8 @@ import 'package:system_network_proxy/constants.dart';
 import 'package:system_network_proxy/flutter_configuration.dart';
 import 'package:system_network_proxy/main.dart';
 import 'package:system_network_proxy/service.dart';
+import 'package:system_network_proxy/utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -30,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   var proxyServer = Service().proxyServer;
   var configUrl = Service().configUrl;
 
-  List<ExpandedItem> items;
+  List<ExpandedItem> items = [];
   TextEditingController proxyServerController = new TextEditingController(text: Service().proxyServer);
 
   @override
@@ -40,48 +42,81 @@ class _HomePageState extends State<HomePage> {
   }
 
   void loadData() async {
-    items = <ExpandedItem>[
-      ExpandedItem(
-        true, // isExpanded ?
-        '系统代理', // header
-        Padding(
-          padding: EdgeInsets.all(DEFAULT_EDGEINSETS),
-          child: FormBuilder(
-            key: _fbKey,
-            initialValue: {
-              'proxyEnable': proxyEnable,
-            },
-            child: Column(
-              children: <Widget>[
-                FormBuilderSwitch(
-                  label: Text('是否启用代理 ( $proxyServer )'),
-                  attribute: "proxyEnable",
-                  initialValue: proxyEnable,
-                  onChanged: (value) async {
-                    await configProxySettings(value, proxyServer, configUrl);
-                  },
-                ),
-              ],
+    var acturalProxyEnable = await Service().getProxyEnable();
+    var acturalProxyServer = await Service().getProxyServer();
+    if (acturalProxyEnable != proxyEnable) {
+      await Service().setProxyEnable(proxyEnable);
+    }
+    if (acturalProxyServer != proxyServer) {
+      await Service().setProxyServer(acturalProxyServer);
+    }
+    showMessageDialog(context, '系统代理', '已 ${proxyEnable ? "开启" : "关闭"} 代理 ${proxyServer}');
+    setState(() {
+      items = <ExpandedItem>[
+        ExpandedItem(
+          true, // isExpanded ?
+          '系统代理', // header
+          Padding(
+            padding: EdgeInsets.all(DEFAULT_EDGEINSETS),
+            child: FormBuilder(
+              key: _fbKey,
+              initialValue: {
+                'proxyEnable': proxyEnable,
+              },
+              child: Column(
+                children: <Widget>[
+                  FormBuilderSwitch(
+                    label: Text('是否启用代理 ( $proxyServer )'),
+                    attribute: "proxyEnable",
+                    initialValue: proxyEnable,
+                    onChanged: (value) async {
+                      await configProxySettings(value, proxyServer, configUrl);
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ), // body
-        Icon(FontAwesome5Solid.network_wired),
-      ),
-      ExpandedItem(
-        false, // isExpanded ?
-        '网卡信息', // header
-        Padding(
-          padding: EdgeInsets.all(DEFAULT_EDGEINSETS),
-          child: NetworkInterfaces(),
-        ), // body
-        Icon(MaterialCommunityIcons.check_network_outline),
-      ),
-    ];
+          ), // body
+          Icon(FontAwesome5Solid.network_wired),
+        ),
+        ExpandedItem(
+          false, // isExpanded ?
+          '网卡信息', // header
+          Padding(
+            padding: EdgeInsets.all(DEFAULT_EDGEINSETS),
+            child: NetworkInterfaces(),
+          ), // body
+          Icon(MaterialCommunityIcons.check_network_outline),
+        ),
+      ];
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: DEFAULT_EDGEINSETS),
+            child: Material(
+              color: Colors.black,
+              child: IconButton(
+                iconSize: 36,
+                icon: Icon(FontAwesome.github),
+                onPressed: () async {
+                  const url = 'https://github.com/liudonghua123/system_network_proxy';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  }
+                },
+              ),
+            ),
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

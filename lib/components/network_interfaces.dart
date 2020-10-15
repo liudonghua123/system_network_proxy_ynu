@@ -31,15 +31,15 @@ class _NetworkInterfacesState extends State<NetworkInterfaces> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: loading
-          ? CircularProgressIndicator()
-          : interfaces
-              .map((item) => ListTile(
-                    title: Text(item.name),
-                    subtitle: Text('${item.addresses[0]?.address}'),
-                  ))
-              .toList(),
-    );
+    return loading
+        ? CircularProgressIndicator()
+        : Column(
+            children: interfaces
+                .map((item) => ListTile(
+                      title: Text(item.name),
+                      subtitle: Text('${item.addresses[0]?.address}'),
+                    ))
+                .toList(),
+          );
   }
 }
