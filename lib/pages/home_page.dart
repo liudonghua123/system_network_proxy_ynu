@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:lottie/lottie.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:system_network_proxy/components/network_interfaces.dart';
@@ -108,10 +109,36 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var appBarHeight = AppBar().preferredSize.height;
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            InkWell(
+              onTap: () async {
+                const url = 'https://github.com/liudonghua123/system_network_proxy';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(DEFAULT_EDGEINSETS),
+                child: Lottie.asset(
+                  'assets/35785-preloader-wifiish-by-fendah-cyberbryte.json',
+                  height: appBarHeight - 2 * DEFAULT_EDGEINSETS,
+                ),
+              ),
+            ),
+            Text(
+              '系统代理设置',
+              style: TextStyle(color: Colors.black45),
+            ),
+          ],
+        ),
+        centerTitle: true,
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: DEFAULT_EDGEINSETS),
@@ -119,15 +146,14 @@ class _HomePageState extends State<HomePage> {
               color: Colors.transparent,
               child: InkWell(
                 onTap: () async {
-                  const url = 'https://github.com/liudonghua123/system_network_proxy';
+                  const url = 'https://github.com/liudonghua123/system_network_proxy/issues';
                   if (await canLaunch(url)) {
                     await launch(url);
                   }
                 },
-                child: SvgPicture.asset(
-                  'assets/github-corner-right.svg',
-                  semanticsLabel: 'github-corner',
-                  height: AppBar().preferredSize.height,
+                child: Lottie.asset(
+                  'assets/28189-github-octocat.json',
+                  height: appBarHeight,
                 ),
               ),
             ),
