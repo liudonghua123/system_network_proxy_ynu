@@ -3,10 +3,14 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/assets/config.yaml": "8a37ffc3034317e7bf6db1ece4a4ae13",
+  "assets/assets/github-corner-right.svg": "6de886fbabaccda8b1d0652d673831ad",
+"assets/assets/github-corner-left.svg": "2dfaa5597e70a67c076a7fbb2f846675",
+"assets/assets/config.yaml": "8a37ffc3034317e7bf6db1ece4a4ae13",
+"assets/assets/35785-preloader-wifiish-by-fendah-cyberbryte.json": "70390b729c8c1317f3a81b8544a6c61e",
 "assets/assets/icon.png": "a4bbbf967df2a0f39d0d8297350eaa3b",
 "assets/assets/fonts/FZLanTYJW_Xian.ttf": "a495ca7d848143195438cd64b1f2a5cf",
-"assets/AssetManifest.json": "2fc79d49e01624ec9f99f73392bb91bc",
+"assets/assets/28189-github-octocat.json": "79b88b248a70055c5af808e04d82baba",
+"assets/AssetManifest.json": "c691e34812837d62702d7aee82dda828",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "b14fcf3ee94e3ace300b192e9e7c8c5d",
 "assets/packages/flutter_vector_icons/fonts/FontAwesome.ttf": "b06871f281fee6b241d60582ae9369b9",
@@ -283,13 +287,13 @@ const RESOURCES = {
 "assets/packages/country_pickers/assets/us.png": "b2b35d5b34ba0d66fda92e2003cd6b10",
 "assets/packages/progress_dialog/assets/double_ring_loading_io.gif": "e5b006904226dc824fdb6b8027f7d930",
 "assets/FontManifest.json": "d823aae6b397c649806eb94f812c239d",
-"assets/NOTICES": "e6e5f4b3c124399b5dc58f4f92f03cf8",
-"favicon.png": "6fa2f8ddc805c7cdf84e682aa23ec001",
+"assets/NOTICES": "7de92266fafeb42ec8b824975da27e6a",
+"favicon.png": "0d26bbc4ef270a282ce75f05b0e15abc",
 "version.json": "2006ddca5e8055546a8ca8c613fd5552",
-"main.dart.js": "16a867cb29ac565c7b253a2468ed16dc",
+"main.dart.js": "eeac2a5da8e8a2e79fc86a6cace94500",
 "manifest.json": "4ddb205d11fe35d3c1ecffec116bf5ab",
-"index.html": "4dbd0a00534432e0ff351c4867a5d232",
-"/": "4dbd0a00534432e0ff351c4867a5d232",
+"index.html": "472627bf1f833560f7a37066f9506c68",
+"/": "472627bf1f833560f7a37066f9506c68",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1"
 };
