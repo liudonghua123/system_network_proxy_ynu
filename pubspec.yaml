@@ -37,6 +37,8 @@ dependencies:
   progress_dialog: ^1.2.4
   flutter_vector_icons: ^0.2.1
   url_launcher: ^5.7.4
+  flutter_svg: ^0.19.0
+
   # desktop_window: ^0.3.0
   window_size:
     git:

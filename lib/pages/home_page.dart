@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:progress_dialog/progress_dialog.dart';
@@ -115,16 +116,19 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: DEFAULT_EDGEINSETS),
             child: Material(
-              color: Colors.black,
-              child: IconButton(
-                iconSize: 36,
-                icon: Icon(FontAwesome.github),
-                onPressed: () async {
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () async {
                   const url = 'https://github.com/liudonghua123/system_network_proxy';
                   if (await canLaunch(url)) {
                     await launch(url);
                   }
                 },
+                child: SvgPicture.asset(
+                  'assets/github-corner-right.svg',
+                  semanticsLabel: 'github-corner',
+                  height: AppBar().preferredSize.height,
+                ),
               ),
             ),
           )
