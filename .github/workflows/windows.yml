@@ -48,7 +48,7 @@ jobs:
           mkdir -p ./squirrel.windows.build/lib/net45/
           cp -r ./build/windows/runner/Release/* ./squirrel.windows.build/lib/net45/
           ./resources/nuget.exe pack ./resources/system_network_proxy.nuspec -BasePath ./squirrel.windows.build -OutputDirectory ./squirrel.windows.build
-          ./resources/packages/squirrel.windows.2.0.1/tools/Squirrel.exe --releasify ./squirrel.windows.build/system_network_proxy.1.0.0.nupkg --releaseDir=./squirrel.windows.build-release
+          ./resources/packages/squirrel.windows.2.0.1/tools/Squirrel.exe --releasify ./squirrel.windows.build/system_network_proxy.1.0.0.nupkg --releaseDir=./squirrel.windows.build-release --loadingGif=./resources/launch_1.gif
         shell: bash
 
       - name: Prepare release files
