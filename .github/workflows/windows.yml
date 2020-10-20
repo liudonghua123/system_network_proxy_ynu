@@ -45,10 +45,11 @@ jobs:
       # http://markwal.github.io/programming/2015/07/28/squirrel-for-windows.html
       - name: Build setup installer with squirrel.windows
         run: |
-          mkdir -p ./squirrel.windows.build/lib/net45/
-          cp -r ./build/windows/runner/Release/* ./squirrel.windows.build/lib/net45/
-          ./resources/nuget.exe pack ./resources/system_network_proxy.nuspec -BasePath ./squirrel.windows.build -OutputDirectory ./squirrel.windows.build
-          ./resources/packages/squirrel.windows.2.0.1/tools/Squirrel.exe --releasify ./squirrel.windows.build/system_network_proxy.1.0.0.nupkg --releaseDir=./squirrel.windows.build-release --loadingGif=./resources/launch_1.gif --setupIcon=./resources/app_icon.ico
+          mkdir -p ./build/squirrel.windows.build/lib/net45/
+          cp -r ./build/windows/runner/Release/* ./build/squirrel.windows.build/lib/net45/
+          cp -r ./resources/system_network_proxy.nuspec ./build/squirrel.windows.build/system_network_proxy.nuspec
+          ./resources/nuget.exe pack ./build/squirrel.windows.build/system_network_proxy.nuspec -BasePath ./build/squirrel.windows.build -OutputDirectory ./build/squirrel.windows.build
+          ./resources/packages/squirrel.windows.2.0.1/tools/Squirrel.exe --releasify ./build/squirrel.windows.build/system_network_proxy.1.0.0.nupkg --releaseDir=./build/squirrel.windows.build-release --loadingGif=./resources/launch_1.gif --setupIcon=./resources/app_icon.ico
         shell: bash
 
       - name: Prepare release files
@@ -59,6 +60,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: system_network_proxy-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip; squirrel.windows.build-release/*
+          file: system_network_proxy-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip; build/squirrel.windows.build-release/*
           tags: true
           draft: false
