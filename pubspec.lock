@@ -554,7 +554,7 @@ packages:
     source: hosted
     version: "0.0.1+8"
   url_launcher_platform_interface:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: url_launcher_platform_interface
       url: "https://pub.flutter-io.cn"
