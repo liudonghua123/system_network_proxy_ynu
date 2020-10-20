@@ -52,6 +52,9 @@ dev_dependencies:
   # https://pub.dev/packages/flutter_launcher_icons
   flutter_launcher_icons: ^0.8.1
 
+dependency_overrides:
+  url_launcher_platform_interface: 1.0.8
+
 # https://pub.dev/packages/flutter_launcher_icons
 # flutter pub run flutter_launcher_icons:main
 flutter_icons:
