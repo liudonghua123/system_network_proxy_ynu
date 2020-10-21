@@ -6,6 +6,7 @@ import 'package:system_network_proxy/service.dart';
 import 'dart:io' show Platform;
 import 'dart:math' as math;
 import 'package:window_size/window_size.dart' as window_size;
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 /// global configuration from yaml
 FlutterConfiguration config;
@@ -18,7 +19,7 @@ void main() async {
 }
 
 configWindowSizeIfNecessary() async {
-  if (Platform.isMacOS || Platform.isLinux || Platform.isWindows) {
+  if (!kIsWeb && (Platform.isMacOS || Platform.isLinux || Platform.isWindows)) {
     // await DesktopWindow.setWindowSize(Size(500, 300));
     var window = await window_size.getWindowInfo();
     if (window.screen != null) {
