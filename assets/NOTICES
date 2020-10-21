@@ -10321,6 +10321,7 @@ image_picker_platform_interface
 path_provider_windows
 shared_preferences
 url_launcher
+url_launcher_platform_interface
 
 Copyright 2017 The Chromium Authors. All rights reserved.
 
@@ -14225,7 +14226,6 @@ shared_preferences_web
 
 --------------------------------------------------------------------------------
 shared_preferences_windows
-url_launcher_platform_interface
 
 // Copyright 2017 The Chromium Authors. All rights reserved.
 //
