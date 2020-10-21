@@ -23,7 +23,7 @@ class _NetworkInterfacesState extends State<NetworkInterfaces> {
     setState(() {
       loading = true;
     });
-    interfaces = await Service().getNetworkInterface();
+    interfaces = await Service().getNetworkInterface() ?? [];
     setState(() {
       loading = false;
     });
