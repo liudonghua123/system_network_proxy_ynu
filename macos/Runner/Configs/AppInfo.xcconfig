@@ -5,7 +5,7 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = system_network_proxy
+PRODUCT_NAME = system_network_proxy_ynu
 
 // The application's bundle identifier
 PRODUCT_BUNDLE_IDENTIFIER = cn.edu.ynu.systemNetworkProxy

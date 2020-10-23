@@ -1,6 +1,6 @@
 {
-    "name": "system_network_proxy",
-    "short_name": "system_network_proxy",
+    "name": "system_network_proxy_ynu",
+    "short_name": "system_network_proxy_ynu",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

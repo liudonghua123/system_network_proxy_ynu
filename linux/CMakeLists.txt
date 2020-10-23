@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "system_network_proxy")
-set(APPLICATION_ID "cn.edu.ynu.system_network_proxy")
+set(BINARY_NAME "system_network_proxy_ynu")
+set(APPLICATION_ID "cn.edu.ynu.system_network_proxy_ynu")
 
 cmake_policy(SET CMP0063 NEW)
 

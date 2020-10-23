@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.edu.ynu.system_network_proxy">
+    package="cn.edu.ynu.system_network_proxy_ynu">
    <application
-        android:label="system_network_proxy"
+        android:label="system_network_proxy_ynu"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(system_network_proxy LANGUAGES CXX)
+project(system_network_proxy_ynu LANGUAGES CXX)
 
-set(BINARY_NAME "system_network_proxy")
+set(BINARY_NAME "system_network_proxy_ynu")
 
 cmake_policy(SET CMP0063 NEW)
 
