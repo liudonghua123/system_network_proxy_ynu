@@ -43,13 +43,13 @@ jobs:
 
       - name: Prepare release files
         run: |
-          cp -r build/macos/Build/Products/Release/system_network_proxy.app system_network_proxy-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
-          zip system_network_proxy-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r system_network_proxy-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
+          cp -r build/macos/Build/Products/Release/system_network_proxy_ynu.app system_network_proxy_ynu-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
+          zip system_network_proxy_ynu-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r system_network_proxy_ynu-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
 
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: system_network_proxy-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip
+          file: system_network_proxy_ynu-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip
           tags: true
           draft: false

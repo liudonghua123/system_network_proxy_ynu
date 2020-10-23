@@ -48,13 +48,13 @@ jobs:
 
       - name: Prepare release files
         run: |
-          cp -r build/linux/release system_network_proxy-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}
-          zip system_network_proxy-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r system_network_proxy-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}
+          cp -r build/linux/release system_network_proxy_ynu-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}
+          zip system_network_proxy_ynu-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r system_network_proxy_ynu-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}
 
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: system_network_proxy-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip
+          file: system_network_proxy_ynu-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip
           tags: true
           draft: false

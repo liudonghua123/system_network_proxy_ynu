@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:system_network_proxy/main.dart';
+import 'package:system_network_proxy_ynu/main.dart';
 
 class Service {
   bool proxyEnable;

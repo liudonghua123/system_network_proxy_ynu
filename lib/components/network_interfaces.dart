@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:system_network_proxy/service.dart';
+import 'package:system_network_proxy_ynu/service.dart';
 
 class NetworkInterfaces extends StatefulWidget {
   NetworkInterfaces({Key key}) : super(key: key);

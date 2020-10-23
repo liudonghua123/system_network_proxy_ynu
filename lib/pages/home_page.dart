@@ -5,12 +5,12 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:lottie/lottie.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:progress_dialog/progress_dialog.dart';
-import 'package:system_network_proxy/components/network_interfaces.dart';
-import 'package:system_network_proxy/constants.dart';
-import 'package:system_network_proxy/flutter_configuration.dart';
-import 'package:system_network_proxy/main.dart';
-import 'package:system_network_proxy/service.dart';
-import 'package:system_network_proxy/utils.dart';
+import 'package:system_network_proxy_ynu/components/network_interfaces.dart';
+import 'package:system_network_proxy_ynu/constants.dart';
+import 'package:system_network_proxy_ynu/flutter_configuration.dart';
+import 'package:system_network_proxy_ynu/main.dart';
+import 'package:system_network_proxy_ynu/service.dart';
+import 'package:system_network_proxy_ynu/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {

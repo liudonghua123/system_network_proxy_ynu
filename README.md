@@ -1,10 +1,10 @@
-# system_network_proxy
+# system_network_proxy_ynu
 
-![Android_IOS-CI](https://github.com/liudonghua123/system_network_proxy/workflows/Android_IOS-CI/badge.svg)
-![WEB-CI](https://github.com/liudonghua123/system_network_proxy/workflows/WEB-CI/badge.svg)
-![MacOS-CI](https://github.com/liudonghua123/system_network_proxy/workflows/MacOS-CI/badge.svg)
-![Linux-CI](https://github.com/liudonghua123/system_network_proxy/workflows/Linux-CI/badge.svg)
-![Windows-CI](https://github.com/liudonghua123/system_network_proxy/workflows/Windows-CI/badge.svg)
+![Android_IOS-CI](https://github.com/liudonghua123/system_network_proxy_ynu/workflows/Android_IOS-CI/badge.svg)
+![WEB-CI](https://github.com/liudonghua123/system_network_proxy_ynu/workflows/WEB-CI/badge.svg)
+![MacOS-CI](https://github.com/liudonghua123/system_network_proxy_ynu/workflows/MacOS-CI/badge.svg)
+![Linux-CI](https://github.com/liudonghua123/system_network_proxy_ynu/workflows/Linux-CI/badge.svg)
+![Windows-CI](https://github.com/liudonghua123/system_network_proxy_ynu/workflows/Windows-CI/badge.svg)
 
 A new Flutter project.
 

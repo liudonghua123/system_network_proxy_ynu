@@ -40,14 +40,14 @@ jobs:
 
       - name: Prepare release files
         run: |
-          cp -r build/ios/Debug-iphonesimulator/Runner.app system_network_proxy-ios-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
-          zip system_network_proxy-ios-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r system_network_proxy-ios-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
-          cp build/app/outputs/apk/release/app-release.apk system_network_proxy-android-${{ steps.branch_name.outputs.SOURCE_NAME }}.apk
+          cp -r build/ios/Debug-iphonesimulator/Runner.app system_network_proxy_ynu-ios-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
+          zip system_network_proxy_ynu-ios-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r system_network_proxy_ynu-ios-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
+          cp build/app/outputs/apk/release/app-release.apk system_network_proxy_ynu-android-${{ steps.branch_name.outputs.SOURCE_NAME }}.apk
 
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: system_network_proxy-ios-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip;system_network_proxy-android-${{ steps.branch_name.outputs.SOURCE_NAME }}.apk
+          file: system_network_proxy_ynu-ios-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip;system_network_proxy_ynu-android-${{ steps.branch_name.outputs.SOURCE_NAME }}.apk
           tags: true
           draft: false

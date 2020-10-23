@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>system_network_proxy</id>
+    <id>system_network_proxy_ynu</id>
     <version>1.0.0</version>
-    <title>system_network_proxy</title>
+    <title>system_network_proxy_ynu</title>
     <authors>Donghua Liu</authors>
     <owners>Donghua Liu</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
-    <projectUrl>http://github.com/liudonghua123/system_network_proxy</projectUrl>
+    <projectUrl>http://github.com/liudonghua123/system_network_proxy_ynu</projectUrl>
     <icon>lib/net45/data/flutter_assets/assets/icon.png</icon>
-    <iconUrl>https://raw.githubusercontent.com/liudonghua123/system_network_proxy/master/resources/icon.png</iconUrl>
-    <description>system_network_proxy is a simple and small system proxy config app.</description>
+    <iconUrl>https://raw.githubusercontent.com/liudonghua123/system_network_proxy_ynu/master/resources/icon.png</iconUrl>
+    <description>system_network_proxy_ynu is a simple and small system proxy config app.</description>
     <copyright>Copyright 2020, all rights reserved</copyright>
     <tags>flutter windows proxy</tags>
     <dependencies>

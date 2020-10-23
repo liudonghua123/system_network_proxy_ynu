@@ -1,8 +1,8 @@
 // import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
-import 'package:system_network_proxy/app.dart';
-import 'package:system_network_proxy/flutter_configuration.dart';
-import 'package:system_network_proxy/service.dart';
+import 'package:system_network_proxy_ynu/app.dart';
+import 'package:system_network_proxy_ynu/flutter_configuration.dart';
+import 'package:system_network_proxy_ynu/service.dart';
 import 'dart:io' show Platform;
 import 'dart:math' as math;
 import 'package:window_size/window_size.dart' as window_size;
