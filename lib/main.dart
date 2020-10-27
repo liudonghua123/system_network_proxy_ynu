@@ -7,11 +7,13 @@ import 'dart:io' show Platform;
 import 'dart:math' as math;
 import 'package:window_size/window_size.dart' as window_size;
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:system_network_proxy/system_network_proxy.dart';
 
 /// global configuration from yaml
 FlutterConfiguration config;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemNetworkProxy.init();
   await configWindowSizeIfNecessary();
   config = await FlutterConfiguration.fromAsset('assets/config.yaml');
   await Service().init();
