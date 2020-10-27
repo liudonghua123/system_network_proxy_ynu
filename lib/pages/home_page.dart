@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             InkWell(
               onTap: () async {
-                const url = 'https://github.com/liudonghua123/system_network_proxy';
+                const url = 'https://github.com/liudonghua123/system_network_proxy_ynu';
                 if (await canLaunch(url)) {
                   await launch(url);
                 }
@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.transparent,
               child: InkWell(
                 onTap: () async {
-                  const url = 'https://github.com/liudonghua123/system_network_proxy/issues';
+                  const url = 'https://github.com/liudonghua123/system_network_proxy_ynu/issues';
                   if (await canLaunch(url)) {
                     await launch(url);
                   }
