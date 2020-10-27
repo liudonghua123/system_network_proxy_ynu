@@ -290,10 +290,10 @@ const RESOURCES = {
 "assets/packages/progress_dialog/assets/double_ring_loading_io.gif": "e5b006904226dc824fdb6b8027f7d930",
 "assets/AssetManifest.json": "7148584f5efd226155bd8c4dbd68d246",
 "manifest.json": "498e8bbbc553d5f4a67df472a72b6e44",
-"main.dart.js": "e2321815383049e086c48f83e0105a23",
+"main.dart.js": "a0a6c7b01d5721035567ea0c6976495f",
 "version.json": "4f1b7a50209791cc2a63936995d21d3e",
-"index.html": "7b2c150dd4a99306cc178f4e43d9640d",
-"/": "7b2c150dd4a99306cc178f4e43d9640d",
+"index.html": "2a232f882f2e9e2a7414171ed99fbab3",
+"/": "2a232f882f2e9e2a7414171ed99fbab3",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1"
 };
