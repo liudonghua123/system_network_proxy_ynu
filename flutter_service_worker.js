@@ -6,7 +6,7 @@ const RESOURCES = {
   "favicon.png": "0d26bbc4ef270a282ce75f05b0e15abc",
 "assets/assets/fonts/FZLanTYJW_Xian.ttf": "a495ca7d848143195438cd64b1f2a5cf",
 "assets/assets/github-corner-left.svg": "2dfaa5597e70a67c076a7fbb2f846675",
-"assets/assets/config.yaml": "8a37ffc3034317e7bf6db1ece4a4ae13",
+"assets/assets/config.yaml": "da27e5d174de98cdbdd99f2e176d9eb4",
 "assets/assets/icon.png": "cc42338ddae9a80e61abd6534767bf1c",
 "assets/assets/35785-preloader-wifiish-by-fendah-cyberbryte.json": "70390b729c8c1317f3a81b8544a6c61e",
 "assets/assets/github-corner-right.svg": "6de886fbabaccda8b1d0652d673831ad",
@@ -290,10 +290,10 @@ const RESOURCES = {
 "assets/packages/progress_dialog/assets/double_ring_loading_io.gif": "e5b006904226dc824fdb6b8027f7d930",
 "assets/AssetManifest.json": "7148584f5efd226155bd8c4dbd68d246",
 "manifest.json": "498e8bbbc553d5f4a67df472a72b6e44",
-"main.dart.js": "a0a6c7b01d5721035567ea0c6976495f",
+"main.dart.js": "10d1c4448da87dadb83b6018f3b971c9",
 "version.json": "4f1b7a50209791cc2a63936995d21d3e",
-"index.html": "2a232f882f2e9e2a7414171ed99fbab3",
-"/": "2a232f882f2e9e2a7414171ed99fbab3",
+"index.html": "3cc43564ef66ce2197c68730ddc49bfc",
+"/": "3cc43564ef66ce2197c68730ddc49bfc",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1"
 };
