@@ -32,65 +32,65 @@
 
 1. 打开`系统偏好设置`；
 
-![](resources/macos_proxy_settings_1.png)
+   ![macos_proxy_settings_1](resources/macos_proxy_settings_1.png)
 
 2. 在系统偏好设置中打开`网络`设置；
 
-![](resources/macos_proxy_settings_2.png)
+   ![macos_proxy_settings_2](resources/macos_proxy_settings_2.png)
 
 3. 在`网络`设置中选中已连接的网络（一般是 Wi-Fi 连接 YNU 热点），然后点击`高级`；
 
-![](resources/macos_proxy_settings_3.png)
+   ![macos_proxy_settings_3](resources/macos_proxy_settings_3.png)
 
 4. 在弹出的高级对话框中选择`代理`Tab，然后勾选上`网页代理(HTTP)`，右边如图所示填写`113.55.17.4`、`3128`代理配置信息，勾选上`网页代理(HTTP)`表示启用代理，取消勾选表示不启用代理；
 
-![](resources/macos_proxy_settings_4.png)
+   ![macos_proxy_settings_4](resources/macos_proxy_settings_4.png)
 
 ### `linux` 代理设置（GNOME3 桌面为例）
 
 1. 点击右上角的网络，然后点打开`网络设置`；
 
-![](resources/linux_proxy_settings_1.png)
+   ![linux_proxy_settings_1](resources/linux_proxy_settings_1.png)
 
 2. 在网络设置左边选择`Network`，点击右边`Network Proxy`旁边的设置小齿轮；
 
-![](resources/linux_proxy_settings_2.png)
+   ![linux_proxy_settings_2](resources/linux_proxy_settings_2.png)
 
-1. 在弹出的`Network Proxy`对话框中选择`Manual`，然后在`HTTP Proxy`一栏中填写`113.55.17.4`、`3128`代理配置信息，选择`Manual`并且配置代理后表示启用代理，选择`Disabled`表示不启用代理；
+3. 在弹出的`Network Proxy`对话框中选择`Manual`，然后在`HTTP Proxy`一栏中填写`113.55.17.4`、`3128`代理配置信息，选择`Manual`并且配置代理后表示启用代理，选择`Disabled`表示不启用代理；
 
-![](resources/linux_proxy_settings_3.png)
+   ![linux_proxy_settings_3](resources/linux_proxy_settings_3.png)
 
 ### `android` 代理设置（华为桌面为例）
 
 1. 打开`系统设置`，然后打开`WLAN`；
 
-![](resources/android_proxy_settings_1.png)
+   ![android_proxy_settings_1](resources/android_proxy_settings_1.png)
 
 2. 在`WLAN`设置中**长按**已连接的 Wi-Fi 热点（例如这里的 YNU），选择`修改网络`；
 
-![](resources/android_proxy_settings_2.png)
+   ![android_proxy_settings_2](resources/android_proxy_settings_2.png)
 
 3. 在弹出的`修改网络`对话框中勾选`显示高级选项`，然后点击`代理`，选择`手动`，然后填写`113.55.17.4`、`3128`代理配置信息，选择`手动`并且配置代理后表示启用代理，选择`无`表示不启用代理；
 
-![](resources/android_proxy_settings_3.png)
+   ![android_proxy_settings_3](resources/android_proxy_settings_3.png)
 
 ### `ios` 代理设置（ios 14 为例）
 
 1. 打开`系统设置`，然后点击`无线局域网`；
 
-![](resources/ios_proxy_settings_1.png)
+   ![ios_proxy_settings_1](resources/ios_proxy_settings_1.png)
 
 2. 在`无线局域网`中点击已连接的 Wi-Fi 热点（例如这里的 YNU）旁边的`感叹号`设置按钮；
 
-![](resources/ios_proxy_settings_2.png)
+   ![ios_proxy_settings_2](resources/ios_proxy_settings_2.png)
 
 3. 在弹出的设置界面最下面点击`配置代理`；
 
-![](resources/ios_proxy_settings_3.png)
+   ![ios_proxy_settings_3](resources/ios_proxy_settings_3.png)
 
 4. 在弹出的`配置代理`中选择`手动`，然后填写`113.55.17.4`、`3128`代理配置信息，选择`手动`并且配置代理后表示启用代理，选择`关闭`表示不启用代理；
 
-![](resources/ios_proxy_settings_4.png)
+   ![ios_proxy_settings_4](resources/ios_proxy_settings_4.png)
 
 ## Todos
 
