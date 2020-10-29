@@ -60,6 +60,20 @@
 
 ![](resources/linux_proxy_settings_3.png)
 
+### `android`代理设置（GNOME3 桌面为例）
+
+1. 打开`系统设置`，然后打开`WLAN`；
+
+![](resources/android_proxy_settings_1.png)
+
+2. 在`WLAN`设置中**长按**已连接的 Wi-Fi 热点（例如这里的 YNU），选择`修改网络`；
+
+![](resources/android_proxy_settings_2.png)
+
+1. 在弹出的`修改网络`对话框中勾选`显示高级选项`，然后点击`代理`，选择`手动`，然后填写`113.55.17.4`、`3128`代理配置信息，选择`手动`并且配置代理后表示启用代理，选择`无`表示不启用代理；
+
+![](resources/android_proxy_settings_3.png)
+
 ## Todos
 
 - [ ] 持续完善`app`设计及用户体验
