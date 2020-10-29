@@ -10,11 +10,11 @@
 
 ## 原理
 
-此`app`的实现的是通过图形界面设置（启用、不启用）系统全局代理（具体实现细节是通过修改注册表），代理地址是`http://113.55.17.4:3128`（使用 squid3 搭建的代理服务器，其中可访问的域名白名单见 https://github.com/liudonghua123/ynu-domain-crawler ），对电脑设置较熟悉的也可以手动设置，设置方式见下文。
+此`app`的实现的是通过图形界面设置（启用、不启用）系统全局代理（具体实现细节是 windows 通过修改注册表，macos、linux 通过执行代理设置命令，可参考 https://github.com/liudonghua123/system_network_proxy ），代理地址是`http://113.55.17.4:3128`（使用 squid3 搭建的代理服务器，其中可访问的域名白名单见 https://github.com/liudonghua123/ynu-domain-crawler ），如果使用 app 有问题也可以手动设置，设置方式见下文。
 
 ## app 使用教程
 
-此`app`使用非常简单，访问 https://github.com/liudonghua123/system_network_proxy_ynu/releases 下载最新版本的`Setup.exe`，点击安装之后会自动在桌面创建 `system_network_proxy_ynu`快捷方式，并且运行此 app，下次打开可以通过桌面快捷方式打开，运行后的界面如下
+此`app`使用非常简单，访问 https://github.com/liudonghua123/system_network_proxy_ynu/releases 下载最新版本的`Setup.exe`，点击安装之后会自动在桌面创建 `system_network_proxy_ynu`快捷方式，并且运行此 app，下次打开可以通过桌面快捷方式打开，macos、linux 分别下载文件名中带有 macos、linux 的 zip 文件，运行后的界面如下
 
 ![](resources/app_snapshot.png)
 
