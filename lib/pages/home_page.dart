@@ -56,14 +56,25 @@ class _HomePageState extends State<HomePage> {
     loadData();
   }
 
+  _normalizeProxy(String proxyServer) {
+    var match = RegExp(r"^(?:http://)?(?<host>.+):(?<port>\d+)$").firstMatch(proxyServer);
+    if (match == null) {
+      print('proxyServer parse error!');
+      return '';
+    }
+    var host = match.namedGroup('host');
+    var port = match.namedGroup('port');
+    return '$host:$port';
+  }
+
   void loadData() async {
     var acturalProxyEnable = await Service().getProxyEnable();
     var acturalProxyServer = await Service().getProxyServer();
+    if (_normalizeProxy(acturalProxyServer) != _normalizeProxy(proxyServer)) {
+      await Service().setProxyServer(acturalProxyServer);
+    }
     if (acturalProxyEnable != proxyEnable) {
       await Service().setProxyEnable(proxyEnable);
-    }
-    if (acturalProxyServer != proxyServer) {
-      await Service().setProxyServer(acturalProxyServer);
     }
     showMessageDialog(context, '系统代理', '已 ${proxyEnable ? "开启" : "关闭"} 代理 ${proxyServer}');
     setState(() {
@@ -119,7 +130,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             InkWell(
               onTap: () async {
-                const url = 'https://github.com/liudonghua123/system_network_proxy';
+                const url = 'https://github.com/liudonghua123/system_network_proxy_ynu';
                 if (await canLaunch(url)) {
                   await launch(url);
                 }
@@ -146,7 +157,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.transparent,
               child: InkWell(
                 onTap: () async {
-                  const url = 'https://github.com/liudonghua123/system_network_proxy/issues';
+                  const url = 'https://github.com/liudonghua123/system_network_proxy_ynu/issues';
                   if (await canLaunch(url)) {
                     await launch(url);
                   }
@@ -266,8 +277,8 @@ class _HomePageState extends State<HomePage> {
 
   configProxySettings(proxyEnable, proxyServer, configUrl) async {
     var service = Service();
-    bool proxyEnableSuccess = await service.setProxyEnable(proxyEnable);
     bool proxyServerSuccess = await service.setProxyServer(proxyServer);
+    bool proxyEnableSuccess = await service.setProxyEnable(proxyEnable);
     if (!proxyEnableSuccess || !proxyServerSuccess) {
       return showSimpleNotification(
         Text("设置系统代理错误"),
