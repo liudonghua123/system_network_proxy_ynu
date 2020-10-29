@@ -20,23 +20,43 @@
 
 ## 手动设置代理方式
 
+### `windows`代理设置
+
 依次通过`控制面饭`-`网络和 Internet`-`Internet 选项`-`连接`或运行`control inetcpl.cpl,,4`打开如下对话框
 
 ![](resources/windows_proxy_settings.png)
 
 点击`局域网设置`，然后可以勾选或取消勾选`为LAN使用代理服务器`，然后设置地址为`113.55.17.4`，端口为`3128`；勾选上表示使用代理，取消勾选表示不使用代理。
 
+### `macos`代理设置
+
+1. 打开`系统偏好设置`；
+
+![](resources/macos_proxy_settings_1.png)
+
+2. 在系统偏好设置中打开`网络`设置；
+
+![](resources/macos_proxy_settings_2.png)
+
+3. 在`网络`设置中选中已连接的网络（一般是 Wi-Fi 连接 YNU 热点），然后点击`高级`；
+
+![](resources/macos_proxy_settings_3.png)
+
+4. 在弹出的高级对话框中选择`代理`Tab，然后勾选上`网页代理(HTTP)`，右边如图所示填写`113.55.17.4`、`3128`，勾选上`网页代理(HTTP)`表示启用代理，取消勾选表示不启用代理；
+
+![](resources/macos_proxy_settings_4.png)
+
 ## Todos
 
 - [ ] 持续完善`app`设计及用户体验
-- [ ] 添加 Linux 支持
-- [ ] 添加 Macos 支持
+- [x] 添加 Linux 支持
+- [x] 添加 Macos 支持
 - [ ] 添加 android 支持
 - [ ] 添加 ios 支持
 
 ## 欢迎 Issues/PR
 
-此 app 仅仅是为了方便不熟悉电脑以及命令行界面的用户提供启用、不启用代理设置的，在使用过程中如果有问题或建议，可以提交[issues](https://github.com/liudonghua123/system_network_proxy_ynu/issues)或者[Pull requests](https://github.com/liudonghua123/system_network_proxy_ynu/pulls)。
+此 app 仅仅是为了方便不熟悉电脑以及命令行界面的用户提供启用、不启用代理设置的，在使用过程中如果有问题或建议，可以提交[issues](https://github.com/liudonghua123/system_network_proxy_ynu/issues)或者[Pull requests](https://github.com/liudonghua123/system_network_proxy_ynu/pulls).
 
 ## LICENSE
 
