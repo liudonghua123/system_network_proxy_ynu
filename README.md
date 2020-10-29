@@ -42,15 +42,29 @@
 
 ![](resources/macos_proxy_settings_3.png)
 
-4. 在弹出的高级对话框中选择`代理`Tab，然后勾选上`网页代理(HTTP)`，右边如图所示填写`113.55.17.4`、`3128`，勾选上`网页代理(HTTP)`表示启用代理，取消勾选表示不启用代理；
+4. 在弹出的高级对话框中选择`代理`Tab，然后勾选上`网页代理(HTTP)`，右边如图所示填写`113.55.17.4`、`3128`代理配置信息，勾选上`网页代理(HTTP)`表示启用代理，取消勾选表示不启用代理；
 
 ![](resources/macos_proxy_settings_4.png)
+
+### `linux`代理设置（GNOME3 桌面为例）
+
+1. 点击右上角的网络，然后点打开`网络设置`；
+
+![](resources/linux_proxy_settings_1.png)
+
+2. 在网络设置左边选择`Network`，点击右边`Network Proxy`旁边的设置小齿轮；
+
+![](resources/linux_proxy_settings_2.png)
+
+1. 在弹出的`Network Proxy`对话框中选择`Manual`，然后在`HTTP Proxy`一栏中填写`113.55.17.4`、`3128`代理配置信息，选择`Manual`并且配置代理后表示启用代理，选择`Disabled`表示不启用代理；
+
+![](resources/linux_proxy_settings_3.png)
 
 ## Todos
 
 - [ ] 持续完善`app`设计及用户体验
-- [x] 添加 Linux 支持
-- [x] 添加 Macos 支持
+- [x] 添加 linux 支持（实验性）
+- [x] 添加 macos 支持（实验性）
 - [ ] 添加 android 支持
 - [ ] 添加 ios 支持
 
