@@ -63,3 +63,4 @@ jobs:
           file: system_network_proxy_ynu-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip; build/squirrel.windows.build-release/*
           tags: true
           draft: false
+          overwrite: true

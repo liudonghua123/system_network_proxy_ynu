@@ -51,3 +51,4 @@ jobs:
           file: system_network_proxy_ynu-ios-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip;system_network_proxy_ynu-android-${{ steps.branch_name.outputs.SOURCE_NAME }}.apk
           tags: true
           draft: false
+          overwrite: true
