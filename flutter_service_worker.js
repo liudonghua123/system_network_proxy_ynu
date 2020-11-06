@@ -12,7 +12,7 @@ const RESOURCES = {
 "assets/assets/github-corner-right.svg": "6de886fbabaccda8b1d0652d673831ad",
 "assets/assets/28189-github-octocat.json": "79b88b248a70055c5af808e04d82baba",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"assets/NOTICES": "d77116c7369ffb8db17ec0b5d67028e7",
+"assets/NOTICES": "64f104364761b74efb137a1e72bd30de",
 "assets/FontManifest.json": "d823aae6b397c649806eb94f812c239d",
 "assets/packages/flutter_vector_icons/fonts/MaterialIcons.ttf": "a37b0c01c0baf1888ca812cc0508f6e2",
 "assets/packages/flutter_vector_icons/fonts/FontAwesome5_Regular.ttf": "f6c6f6c8cb7784254ad00056f6fbd74e",
@@ -290,10 +290,10 @@ const RESOURCES = {
 "assets/packages/progress_dialog/assets/double_ring_loading_io.gif": "e5b006904226dc824fdb6b8027f7d930",
 "assets/AssetManifest.json": "7148584f5efd226155bd8c4dbd68d246",
 "manifest.json": "498e8bbbc553d5f4a67df472a72b6e44",
-"main.dart.js": "10d1c4448da87dadb83b6018f3b971c9",
+"main.dart.js": "5d4cab9afab6cb2c09124d0354b6ccd5",
 "version.json": "4f1b7a50209791cc2a63936995d21d3e",
-"index.html": "68d122659f4ada6bc92a7ff0fb83d188",
-"/": "68d122659f4ada6bc92a7ff0fb83d188",
+"index.html": "dea31ab72b42bc8fd01e50d8aef29183",
+"/": "dea31ab72b42bc8fd01e50d8aef29183",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1"
 };
