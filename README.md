@@ -14,7 +14,7 @@
 
 ## app 使用教程
 
-此`app`使用非常简单，访问 https://github.com/liudonghua123/system_network_proxy_ynu/releases 下载最新版本的`Setup.exe`，点击安装之后会自动在桌面创建 `system_network_proxy_ynu`快捷方式，并且运行此 app，下次打开可以通过桌面快捷方式打开，macos、linux 分别下载文件名中带有 macos、linux 的 zip 文件，运行后的界面如下
+此`app`使用非常简单，访问 https://github.com/liudonghua123/system_network_proxy_ynu/releases/latest 下载最新版本的`Setup.exe`，点击安装之后会自动在桌面创建 `system_network_proxy_ynu`快捷方式，并且运行此 app，下次打开可以通过桌面快捷方式打开，macos、linux 分别下载文件名中带有 macos、linux 的 zip 文件，运行后的界面如下
 
 ![](resources/app_snapshot.png)
 
