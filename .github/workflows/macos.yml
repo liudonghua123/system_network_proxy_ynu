@@ -9,6 +9,8 @@ on:
 
 jobs:
   build:
+    env:
+      APP_NAME: system_network_proxy_ynu
     runs-on: macos-latest
     if: contains(github.ref, 'tags')
     steps:
@@ -43,14 +45,14 @@ jobs:
 
       - name: Prepare release files
         run: |
-          cp -r build/macos/Build/Products/Release/system_network_proxy_ynu.app system_network_proxy_ynu-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
-          zip system_network_proxy_ynu-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r system_network_proxy_ynu-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
+          cp -r build/macos/Build/Products/Release/${APP_NAME}.app ${APP_NAME}-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
+          zip ${APP_NAME}-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r ${APP_NAME}-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.app
 
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: system_network_proxy_ynu-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip
+          file: ${APP_NAME}-macos-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip
           tags: true
           draft: false
           overwrite: true

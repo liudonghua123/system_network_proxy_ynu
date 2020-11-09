@@ -7,6 +7,8 @@ on:
 
 jobs:
   build:
+    env:
+      APP_NAME: system_network_proxy_ynu
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

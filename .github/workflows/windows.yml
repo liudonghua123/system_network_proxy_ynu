@@ -9,6 +9,8 @@ on:
 
 jobs:
   build:
+    env:
+      APP_NAME: system_network_proxy_ynu
     runs-on: windows-latest
     if: contains(github.ref, 'tags')
     steps:
@@ -47,20 +49,21 @@ jobs:
         run: |
           mkdir -p ./build/squirrel.windows.build/lib/net45/
           cp -r ./build/windows/runner/Release/* ./build/squirrel.windows.build/lib/net45/
-          cp -r ./resources/system_network_proxy_ynu.nuspec ./build/squirrel.windows.build/system_network_proxy_ynu.nuspec
-          ./resources/nuget.exe pack ./build/squirrel.windows.build/system_network_proxy_ynu.nuspec -BasePath ./build/squirrel.windows.build -OutputDirectory ./build/squirrel.windows.build
-          ./resources/packages/squirrel.windows.2.0.1/tools/Squirrel.exe --releasify ./build/squirrel.windows.build/system_network_proxy_ynu.1.0.0.nupkg --releaseDir=./build/squirrel.windows.build-release --loadingGif=./resources/launch_1.gif --setupIcon=./resources/app_icon.ico
+          cp -r ./resources/${APP_NAME}.nuspec ./build/squirrel.windows.build/${APP_NAME}.nuspec
+          ./resources/nuget.exe pack ./build/squirrel.windows.build/${APP_NAME}.nuspec -BasePath ./build/squirrel.windows.build -OutputDirectory ./build/squirrel.windows.build
+          ./resources/packages/squirrel.windows.2.0.1/tools/Squirrel.exe --releasify ./build/squirrel.windows.build/${APP_NAME}.1.0.0.nupkg --releaseDir=./build/squirrel.windows.build-release --loadingGif=./resources/launch_1.gif --setupIcon=./resources/app_icon.ico
         shell: bash
 
       - name: Prepare release files
         run: |
-          7z a -tzip system_network_proxy_ynu-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r .\build\windows\runner\Release\*
+          7z a -tzip ${APP_NAME}-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r ./build/windows/runner/Release/*
+        shell: bash
 
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: system_network_proxy_ynu-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip; build/squirrel.windows.build-release/*
+          file: ${APP_NAME}-windows-x64-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip; build/squirrel.windows.build-release/*
           tags: true
           draft: false
           overwrite: true
