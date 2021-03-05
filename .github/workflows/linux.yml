@@ -50,7 +50,7 @@ jobs:
 
       - name: Prepare release files
         run: |
-          cp -r build/linux/release/bundle ${APP_NAME}-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}
+          cp -r build/linux/x64/release/bundle ${APP_NAME}-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}
           zip ${APP_NAME}-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}.zip -r ${APP_NAME}-linux-${{ steps.branch_name.outputs.SOURCE_NAME }}
 
       - uses: xresloader/upload-to-github-release@v1
