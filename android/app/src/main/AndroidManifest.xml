@@ -2,7 +2,7 @@
     package="cn.edu.ynu.system_network_proxy_ynu">
    <application
         android:label="system_network_proxy_ynu"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
