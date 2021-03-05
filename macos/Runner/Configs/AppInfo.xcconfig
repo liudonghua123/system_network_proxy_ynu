@@ -8,7 +8,7 @@
 PRODUCT_NAME = system_network_proxy_ynu
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = cn.edu.ynu.systemNetworkProxy
+PRODUCT_BUNDLE_IDENTIFIER = cn.edu.ynu.systemNetworkProxyYnu
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2020 cn.edu.ynu. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2021 cn.edu.ynu. All rights reserved.
