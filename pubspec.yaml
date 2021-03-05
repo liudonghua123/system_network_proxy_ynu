@@ -29,7 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.0
 
   shared_preferences: ^0.5.12
-  overlay_support: ^1.0.5
+  overlay_support: ^1.2.0-nullsafety.0
   yaml_config: ^0.1.2
   flutter_form_builder: ^3.14.0
   http: ^0.12.2
@@ -59,6 +59,15 @@ flutter_icons:
   ios: true
   image_path: "assets/icon.png"
 
+dependency_overrides:
+  date_range_picker:
+    git:
+      url: git://github.com/justkawal/date_range_picker.git
+      ref: master
+  country_pickers:
+    git:
+      url: git://github.com/justkawal/country_pickers.git
+      ref: master
 # dependency_overrides:
 #   flutter_form_builder:
 #     git:
