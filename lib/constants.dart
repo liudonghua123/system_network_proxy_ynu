@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const double DEFAULT_EDGEINSETS = 8;
+const double defaultEdgeinsets = 8;
 
 const defaultTitleTextStyle = TextStyle(
   fontSize: 18,

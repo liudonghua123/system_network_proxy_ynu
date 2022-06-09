@@ -1,10 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:lottie/lottie.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:progress_dialog/progress_dialog.dart';
 import 'package:system_network_proxy_ynu/components/network_interfaces.dart';
 import 'package:system_network_proxy_ynu/constants.dart';
 import 'package:system_network_proxy_ynu/flutter_configuration.dart';
@@ -12,12 +11,13 @@ import 'package:system_network_proxy_ynu/main.dart';
 import 'package:system_network_proxy_ynu/service.dart';
 import 'package:system_network_proxy_ynu/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:sn_progress_dialog/sn_progress_dialog.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class ExpandedItem {
@@ -39,16 +39,17 @@ class _HomePageState extends State<HomePage> {
       false,
       '系统代理',
       Container(),
-      Icon(FontAwesome5Solid.network_wired),
+      const Icon(FontAwesome5Solid.network_wired),
     ),
     ExpandedItem(
       false,
       '网卡信息',
       Container(),
-      Icon(MaterialCommunityIcons.check_network_outline),
+      const Icon(MaterialCommunityIcons.check_network_outline),
     ),
   ];
-  TextEditingController proxyServerController = new TextEditingController(text: Service().proxyServer);
+  TextEditingController proxyServerController =
+      TextEditingController(text: Service().proxyServer);
 
   @override
   void initState() {
@@ -57,9 +58,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   _normalizeProxy(String proxyServer) {
-    var match = RegExp(r"^(?:http://)?(?<host>.+):(?<port>\d+)$").firstMatch(proxyServer);
+    var match = RegExp(r"^(?:http://)?(?<host>.+):(?<port>\d+)$")
+        .firstMatch(proxyServer);
     if (match == null) {
-      print('proxyServer parse error!');
+      if (kDebugMode) {
+        print('proxyServer is invalid');
+      }
       return '';
     }
     var host = match.namedGroup('host');
@@ -76,14 +80,18 @@ class _HomePageState extends State<HomePage> {
     if (acturalProxyEnable != proxyEnable) {
       await Service().setProxyEnable(proxyEnable);
     }
-    showMessageDialog(context, '系统代理', '已 ${proxyEnable ? "开启" : "关闭"} 代理 ${proxyServer}');
+    // https://stackoverflow.com/questions/72505027/do-not-use-buildcontexts-across-async-gaps-after-update-pub-yaml-to-the-major-v
+    if (mounted) {
+      showMessageDialog(
+          context, '系统代理', '已 ${proxyEnable ? "开启" : "关闭"} 代理 $proxyServer');
+    }
     setState(() {
       items = <ExpandedItem>[
         ExpandedItem(
           true, // isExpanded ?
           '系统代理', // header
           Padding(
-            padding: EdgeInsets.all(DEFAULT_EDGEINSETS),
+            padding: const EdgeInsets.all(defaultEdgeinsets),
             child: FormBuilder(
               key: _fbKey,
               initialValue: {
@@ -92,8 +100,8 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: <Widget>[
                   FormBuilderSwitch(
-                    label: Text('是否启用代理 ( $proxyServer )'),
-                    attribute: "proxyEnable",
+                    title: Text('是否启用代理 ( $proxyServer )'),
+                    name: "proxyEnable",
                     initialValue: proxyEnable,
                     onChanged: (value) async {
                       await configProxySettings(value, proxyServer, configUrl);
@@ -103,16 +111,16 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ), // body
-          Icon(FontAwesome5Solid.network_wired),
+          const Icon(FontAwesome5Solid.network_wired),
         ),
         ExpandedItem(
           false, // isExpanded ?
           '网卡信息', // header
-          Padding(
-            padding: EdgeInsets.all(DEFAULT_EDGEINSETS),
+          const Padding(
+            padding: EdgeInsets.all(defaultEdgeinsets),
             child: NetworkInterfaces(),
           ), // body
-          Icon(MaterialCommunityIcons.check_network_outline),
+          const Icon(MaterialCommunityIcons.check_network_outline),
         ),
       ];
     });
@@ -130,20 +138,21 @@ class _HomePageState extends State<HomePage> {
           children: [
             InkWell(
               onTap: () async {
-                const url = 'https://github.com/liudonghua123/system_network_proxy_ynu';
-                if (await canLaunch(url)) {
-                  await launch(url);
+                var url = Uri.parse(
+                    'https://github.com/liudonghua123/system_network_proxy_ynu');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
                 }
               },
               child: Padding(
-                padding: const EdgeInsets.all(DEFAULT_EDGEINSETS),
+                padding: const EdgeInsets.all(defaultEdgeinsets),
                 child: Lottie.asset(
                   'assets/35785-preloader-wifiish-by-fendah-cyberbryte.json',
-                  height: appBarHeight - 2 * DEFAULT_EDGEINSETS,
+                  height: appBarHeight - 2 * defaultEdgeinsets,
                 ),
               ),
             ),
-            Text(
+            const Text(
               '系统代理设置',
               style: TextStyle(color: Colors.black45),
             ),
@@ -152,14 +161,15 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: DEFAULT_EDGEINSETS),
+            padding: const EdgeInsets.symmetric(horizontal: defaultEdgeinsets),
             child: Material(
               color: Colors.transparent,
               child: InkWell(
                 onTap: () async {
-                  const url = 'https://github.com/liudonghua123/system_network_proxy_ynu/issues';
-                  if (await canLaunch(url)) {
-                    await launch(url);
+                  var url = Uri.parse(
+                      'https://github.com/liudonghua123/system_network_proxy_ynu/issues');
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url);
                   }
                 },
                 child: Lottie.asset(
@@ -189,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                         title: Text(
                           item.header,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.w400,
                           ),
@@ -202,49 +212,56 @@ class _HomePageState extends State<HomePage> {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: Text('配置代理', style: TextStyle(color: Colors.blueAccent)),
+                                title: const Text('配置代理',
+                                    style: TextStyle(color: Colors.blueAccent)),
                                 content: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     TextField(
                                       controller: proxyServerController,
                                       textAlign: TextAlign.left,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         border: InputBorder.none,
                                         hintText: '输入代理地址',
-                                        hintStyle: TextStyle(color: Colors.grey),
+                                        hintStyle:
+                                            TextStyle(color: Colors.grey),
                                       ),
                                     )
                                   ],
                                 ),
                                 actions: [
-                                  FlatButton(
-                                    child: Text("取消"),
+                                  TextButton(
+                                    child: const Text("取消"),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
                                   ),
-                                  FlatButton(
-                                    child: Text("更新"),
+                                  TextButton(
+                                    child: const Text("更新"),
                                     onPressed: () async {
-                                      var progressDialog = ProgressDialog(
-                                        context,
-                                        type: ProgressDialogType.Normal,
-                                        isDismissible: false,
-                                        showLogs: true,
-                                      );
-                                      await progressDialog.show();
-                                      var remoteConfig = await FlutterConfiguration.fromAssetUrl(config.configUrl);
-                                      await progressDialog.hide();
-                                      proxyServerController.text = remoteConfig.proxyServer;
+                                      var progressDialog =
+                                          ProgressDialog(context: context);
+                                      await progressDialog.show(
+                                          max: 100, msg: 'Loading...');
+                                      var remoteConfig =
+                                          await FlutterConfiguration
+                                              .fromAssetUrl(config.configUrl);
+                                      progressDialog.close();
+                                      proxyServerController.text =
+                                          remoteConfig.proxyServer;
                                       configProxySettings(
-                                          proxyEnable, remoteConfig.proxyServer, remoteConfig.configUrl);
+                                          proxyEnable,
+                                          remoteConfig.proxyServer,
+                                          remoteConfig.configUrl);
                                     },
                                   ),
-                                  FlatButton(
-                                    child: Text("确定"),
+                                  TextButton(
+                                    child: const Text("确定"),
                                     onPressed: () {
-                                      configProxySettings(proxyEnable, proxyServerController.text, configUrl);
+                                      configProxySettings(
+                                          proxyEnable,
+                                          proxyServerController.text,
+                                          configUrl);
                                       Navigator.of(context).pop();
                                     },
                                   ),
@@ -281,7 +298,7 @@ class _HomePageState extends State<HomePage> {
     bool proxyEnableSuccess = await service.setProxyEnable(proxyEnable);
     if (!proxyEnableSuccess || !proxyServerSuccess) {
       return showSimpleNotification(
-        Text("设置系统代理错误"),
+        const Text("设置系统代理错误"),
         background: Colors.red,
         position: NotificationPosition.bottom,
       );
@@ -294,7 +311,7 @@ class _HomePageState extends State<HomePage> {
     });
     service.saveProxySettings(proxyEnable, proxyServer, configUrl);
     showSimpleNotification(
-      Text("成功设置系统代理"),
+      const Text("成功设置系统代理"),
       background: Colors.green,
       position: NotificationPosition.bottom,
     );

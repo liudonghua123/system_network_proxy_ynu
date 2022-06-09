@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:system_network_proxy_ynu/service.dart';
 
 class NetworkInterfaces extends StatefulWidget {
-  NetworkInterfaces({Key key}) : super(key: key);
+  const NetworkInterfaces({Key? key}) : super(key: key);
 
   @override
-  _NetworkInterfacesState createState() => _NetworkInterfacesState();
+  State<NetworkInterfaces> createState() => _NetworkInterfacesState();
 }
 
 class _NetworkInterfacesState extends State<NetworkInterfaces> {
@@ -32,12 +32,12 @@ class _NetworkInterfacesState extends State<NetworkInterfaces> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? CircularProgressIndicator()
+        ? const CircularProgressIndicator()
         : Column(
             children: interfaces
                 .map((item) => ListTile(
                       title: Text(item.name),
-                      subtitle: Text('${item.addresses[0]?.address}'),
+                      subtitle: Text(item.addresses[0].address),
                     ))
                 .toList(),
           );

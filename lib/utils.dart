@@ -5,11 +5,11 @@ showMessageDialog(BuildContext context, String title, String content) async {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text(title, style: TextStyle(color: Colors.blueAccent)),
+        title: Text(title, style: const TextStyle(color: Colors.blueAccent)),
         content: Text(content),
         actions: [
-          FlatButton(
-            child: Text("确定"),
+          TextButton(
+            child: const Text("确定"),
             onPressed: () {
               Navigator.of(context).pop();
             },
