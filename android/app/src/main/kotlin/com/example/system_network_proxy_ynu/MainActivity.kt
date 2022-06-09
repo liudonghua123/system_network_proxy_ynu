@@ -1,4 +1,4 @@
-package cn.edu.ynu.system_network_proxy_ynu
+package com.example.system_network_proxy_ynu
 
 import io.flutter.embedding.android.FlutterActivity
 
